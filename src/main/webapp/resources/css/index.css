@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.main_visual{
+		padding:0 15px;
+		background: rgb(235,241,246); /* Old browsers */
+		background: -moz-linear-gradient(left, rgba(235,241,246,1) 0%, rgba(183,234,255,1) 28%, rgba(137,195,235,1) 80%, rgba(213,235,251,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(left, rgba(235,241,246,1) 0%,rgba(183,234,255,1) 28%,rgba(137,195,235,1) 80%,rgba(213,235,251,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, rgba(235,241,246,1) 0%,rgba(183,234,255,1) 28%,rgba(137,195,235,1) 80%,rgba(213,235,251,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 ); /* IE6-9 */
+	}
+	
+	.main_visual h2{
+		width:100%;
+		padding:100px 0;
+		text-align: center;
+		font-size:30px;
+		color:#fff;
+	}
