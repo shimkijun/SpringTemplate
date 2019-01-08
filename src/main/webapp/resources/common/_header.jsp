@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/footer.css" />
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/joinForm.css" />
+<link rel="stylesheet" href="css/loginForm.css" />
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
