@@ -17,23 +17,30 @@ import com.spring.project.HomeController;
 @Controller
 public class ErrorController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@RequestMapping(value = "errors", method = RequestMethod.GET)
-	public ModelAndView renderErrorPage(HttpServletRequest request) {
+	@RequestMapping(value = "errors", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView renderGetErrorPage(HttpServletRequest request) {
 		 ModelAndView errorPage = new ModelAndView("errors/error");
 		 String title = "";
 		 String msg = "";
 		 String ex = "";
 		 int httpErrorCode = getErrorCode(request);
+		 System.out.println(httpErrorCode);
 		 switch (httpErrorCode) {
-         
          case 404: {
         	 title ="404error 페이지를 찾을 수 없습니다.";
         	 msg = "요청하신 페이지를 찾을 수 없습니다.";
         	 ex = "주소가 바뀌었거나 잘못 입력된 주소입니다.";
              break;
+         }case 405: {
+        	 title ="405error 메서드가 허용되지 않습니다.";
+        	 msg = "요청하신 메서드가 허용되지 않습니다.";
+        	 ex = "요청에 의해 식별 되는 리소스에 대 한 요청 라인에 지정 된 메서드가 허용 되지 않습니다. 적절 한 MIME 형식을 요청 하는 리소스에 대 한 설정 있는지 확인 하십시오.";
+             break;
          }
          case 500: {
-        	 msg = "Http Error Code: 500. Internal Server Error";
+        	 title ="500error";
+        	 msg = "500error";
+        	 ex = "500error";
              break;
          }
      }

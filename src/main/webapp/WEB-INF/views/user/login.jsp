@@ -114,7 +114,7 @@
 	}
 </style>
 <div class="login_wrap">
-	<form action="register" method="POST">
+	<form action="loginAction" method="POST" name="loginForm">
 		<div class="login_from_wrap">
 			<div class="login_head">
 				<h2>
@@ -150,4 +150,23 @@
 		</div>
 	</form>
 </div>
+<script>
+	$("#loginSubmit").on("click",function(){
+		var userId = $("#userId");
+		var userPw = $("#userPw");
+		
+		if(userId.val() == "" || userId.val() == null){
+			alert("아이디를 입력 하세요.");
+			userId.focus();
+			return false;
+		}else if(userPw.val() == "" || userPw.val() == null){
+			alert("비밀번호를 입력 하세요.");
+			userPw.focus();
+			return false;
+		}else{
+			loginForm.submit();
+		}
+		
+	});
+</script>
 <%@ include file="/resources/common/_bottom.jsp"%>

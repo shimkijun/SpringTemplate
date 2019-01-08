@@ -1,128 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/resources/common/_top.jsp"%>
-<style>
-	.join_wrap{
-		max-width:600px;
-		width:100%;
-		margin:50px auto;
-	}
-	
-	.join_from_wrap{
-		width:100%;
-		border:1px solid #efefef;
-		border-radius: 10px;
-		overflow:hidden;
-	}
-	
-	.join_head{
-		padding:10px;
-		background-color:#2e4162;
-		color:#fff;
-		font-size:15px;
-	}
-	
-	.join_from_wrap ul > li{
-		padding:10px;
-		border-bottom:1px solid #efefef;
-	}
-	
-	
-	
-	.join_from_wrap ul > li:last-child{
-		border-bottom:0;
-	}
-	
-	
-	ul li .join_tr::after{
-		display:block;
-		clear:both;
-		content:"";
-	}
-	ul li .join_tr > div{
-		float:left;
-		font-size:14px;
-		height:30px;
-		line-height:30px;
-	}
-	
-	ul li .join_tr > div.join_th{
-		font-weight:700;
-		color:#2e4162;
-		width:20%;
-	}
-	
-	ul li .join_tr > div.join_td{
-		line-height:0;
-		width:80%;
-	}
-	ul li .join_tr > div.join_td input{
-		height:100%;
-		width:50%;
-		padding:0 5px;
-	}
-	
-	ul li .join_tr > div.info_ex{
-		padding-top:10px;
-		margin-top:10px;
-		border-top:1px solid #efefef;
-		width:100%;
-		height:auto;
-	}
-	
-	.join_wrap input{
-		border:1px solid #ddd;
-		padding:0;
-		margin:0;
-	}
-	.join_wrap label{
-		display:block;
-		width:100%;
-		height:100%;
-	}
-	.join_wrap button{
-		width:150px;
-		border:1px solid #efefef;
-		border-radius: 5px;
-		height:30px;
-		cursor:pointer;
-		background-color:#00aef0;
-		color:#fff;
-		font-weight:700;
-	}
-	.join_wrap button:hover{
-		background-color:#2e4162;
-	}
-	
-	.join_wrap .txt{
-		font-size:12px !important;
-	}
-	
-	.join_btn_wrap{
-		padding:20px 0;
-		text-align:center;
-	}
-	.join_btn_wrap a{
-		display:inline-block;
-		vertical-align:top;
-		width:150px;
-		border:1px solid #efefef;
-		border-radius: 5px;
-		height:30px;
-		line-height:30px;
-		cursor:pointer;
-		background-color:#2e4162;
-		color:#fff;
-		font-weight:700;
-		font-size:13px;
-	}
-	
-	.join_btn_wrap a:hover{
-		background-color:#00aef0;
-	}
-</style>
 <div class="join_wrap">
-	<form action="register" method="POST" name="joinForm">
+	<form action="joinAction" method="POST" name="joinForm">
 		<div class="join_from_wrap">
 			<div class="join_head">
 				<h2>
@@ -165,7 +45,7 @@
 						<div class="join_td">
 							<input type="password" id="userPw2" name="userPw2" maxlength="14" autocomplete=off>
 							<span class="passChk txt">
-								비밀번호가 틀립니다.
+								
 							</span>
 						</div>
 					</div>
@@ -218,40 +98,4 @@
 		</div>
 	</form>
 </div>
-<script>
-	$("#userId").on("change",function(){
-		var userId = $("#userId");
-		var idReg = /^[a-z0-9]{4,14}/g;
-		if(!idReg.test(userId.val())){
-			alert("양식에 맞춰 입력해주세요.");
-			return;
-		}
-	})
-
-	$("#joinSubmit").on("click",function(){
-		var userId = $("#userId");
-		var userPw1 = $("#userPw1");
-		var userPw2 = $("#userPw2");
-		var userName = $("#userName");
-		var userEmail = $("#userEmail");
-		var userPhone = $("#userPhone");
-		var userAge = $("#userAge");
-		var idReg = /^[a-z0-9]{4,14}$/;
-		
-		
-		if(userId.val() == "" || userId.val() == null){
-			alert("아이디 입력하세요");
-			userId.focus();
-			return false;
-		}else if(!idReg.test(userId.val())){
-			alert("양식에 맞춰 입력해주세요.");
-			userId.focus();
-			return false;
-		}else if(){
-			
-		}
-		
-	});
-	
-</script>
 <%@ include file="/resources/common/_bottom.jsp"%>

@@ -6,5 +6,6 @@
 			</div>
 		</footer>
     </div>
+    <%@ include file="_footer.jsp" %>
 </body>
 </html>
