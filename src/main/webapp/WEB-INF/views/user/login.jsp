@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/resources/common/_top.jsp"%>
 <div class="login_wrap">
-	<form action="loginAction" method="POST" name="loginForm">
+	<form action="login" method="POST" name="loginForm">
 		<div class="login_from_wrap">
 			<div class="login_head">
 				<h2>
@@ -34,7 +34,7 @@
 		</div>
 		<div class="login_btn_wrap">
 			<button type="button" id="loginSubmit">로그인</button>
-			<a href="join">회원가입</a>
+			<a href="joinForm">회원가입</a>
 		</div>
 	</form>
 </div>

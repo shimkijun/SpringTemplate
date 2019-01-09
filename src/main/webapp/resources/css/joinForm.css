@@ -57,6 +57,7 @@
 		height:100%;
 		width:50%;
 		padding:0 5px;
+		vertical-align: top;
 	}
 	
 	ul li .join_tr > div.info_ex{

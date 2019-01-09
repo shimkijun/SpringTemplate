@@ -31,10 +31,10 @@
 		<div class="right_info">
 			<ul class="rignt_menu">
 				<li>
-					<a href="join">회원가입</a>
+					<a href="joinForm">회원가입</a>
 				</li>
 				<li>
-					<a href="login">로그인</a>
+					<a href="loginForm">로그인</a>
 				</li>
 			</ul>
 		</div>

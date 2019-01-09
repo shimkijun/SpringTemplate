@@ -14,7 +14,7 @@ public class DBConnect {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		
 		dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;serverTimezone=Asia/Seoul");
+		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/springdb?useSSL=false&serverTimezone=Asia/Seoul");
 		dataSource.setUser("root");
 		dataSource.setPassword("1111");
 		dataSource.setMaxPoolSize(200);
