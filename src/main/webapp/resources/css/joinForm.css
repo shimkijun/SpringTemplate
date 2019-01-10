@@ -114,7 +114,9 @@
 		font-weight:700;
 		font-size:13px;
 	}
-	
+	.passChk{
+		line-height: 28px;
+	}
 	.passChk.success{
 		color:#00aef0;
 	}

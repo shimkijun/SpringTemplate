@@ -17,7 +17,7 @@
 						</div>
 						<div class="join_td">
 							<input type="text" id="userId" name="userId" maxlength="14" autocomplete=off>
-							<button type="button" id="idChk">아이디확인</button>
+							<button type="button" id="idChk" >아이디확인</button>
 						</div>
 						<div class="info_ex txt">
 							한글,대문자는 사용 할 수 없습니다.(최소 4글자 최대 14글자)
@@ -97,5 +97,25 @@
 			<a href="loginForm">로그인</a>
 		</div>
 	</form>
+	<script>
+	$("#idChk").on("click",function(){
+		var userId = $("#userId").val();
+        $.ajax({
+            url : "idCheck",
+            type: "POST",
+            data : { userId : userId},
+            success : function(result){
+               if(result == 0){
+            	   alert("사용 가능한 아이디 입니다.");
+               }else if(result == 1){
+            	   alert("이미 사용중 입니다.");
+               }else if(result == 2){
+            	   alert("아이디 입력 하세요.");
+               }
+            }
+        });
+
+    });
+	</script>
 </div>
 <%@ include file="/resources/common/_bottom.jsp"%>

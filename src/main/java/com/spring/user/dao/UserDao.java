@@ -46,7 +46,7 @@ public class UserDao implements InterUserDao{
 	}
 
 	@Override
-	public UserDto userSelect(UserDto users) {
+	public UserDto userLogin(UserDto users) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		PasswordEncoding passwordEncoding = new PasswordEncoding(passwordEncoder);
 		List<UserDto> user = null;
@@ -96,7 +96,15 @@ public class UserDao implements InterUserDao{
 	@Override
 	public int userCheck(UserDto user) {
 		
-		return 0;
+		if(user.getUserId() == null || user.getUserId() == "") {
+			return 2;
+		}
+		
+		int result = 0;
+		String sql = "";
+		sql = "SELECT COUNT(*) FROM springMember WHERE userId=?";
+		result = template.queryForObject(sql, new Object[] {user.getUserId()},Integer.class);
+		return (result > 0 ? result : 0);
 	}
 	
 }

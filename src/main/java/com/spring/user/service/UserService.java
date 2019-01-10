@@ -20,22 +20,13 @@ public class UserService implements InterUserService{
 
 	@Override
 	public UserDto userLogin(UserDto user) {
-		UserDto dto = dao.userSelect(user);
-		
-		if(dto == null) {
-			System.out.println("login no");
-		}else {
-			System.out.println("login ok");
-		}
-		
-		return dto;
+		return dao.userLogin(user);
 		
 	}
 
 	@Override
 	public int userCheck(UserDto user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.userCheck(user);
 	}
 
 	@Override
@@ -49,6 +40,7 @@ public class UserService implements InterUserService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 }

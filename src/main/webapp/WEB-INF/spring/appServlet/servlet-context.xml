@@ -26,8 +26,14 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.spring" />
-
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/modifyForm"/>
+			<mapping path="/deleteForm"/>
+			<beans:bean class="com.spring.user.dto.UserLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>
 
 
