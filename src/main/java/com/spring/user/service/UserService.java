@@ -30,15 +30,19 @@ public class UserService implements InterUserService{
 	}
 
 	@Override
-	public UserDto userModify(UserDto user) {
-		// TODO Auto-generated method stub
-		return null;
+	public int userModify(UserDto user) {
+		return dao.userUpdate(user);
 	}
 
 	@Override
 	public int userRemove(UserDto user) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public UserDto userInfo(UserDto user) {
+		return dao.userInfoCheck(user);
 	}
 
 

@@ -31,6 +31,7 @@
 		<interceptor>
 			<mapping path="/modifyForm"/>
 			<mapping path="/deleteForm"/>
+			<mapping path="/mycheckForm"/>
 			<beans:bean class="com.spring.user.dto.UserLoginInterceptor"/>
 		</interceptor>
 	</interceptors>

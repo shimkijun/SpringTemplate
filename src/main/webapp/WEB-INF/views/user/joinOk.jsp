@@ -83,7 +83,7 @@
 		</h2>
 	</div>
 	<div class="jwc_info">
-		<div class="jwc_id"><span>userId</span> 님 회원가입을 진심으로 축하드리며 자주 방문 부탁드립니다.^^</div>
+		<div class="jwc_id"><span>${user.userId}</span> 님 회원가입을 진심으로 축하드리며 자주 방문 부탁드립니다.^^</div>
 		<div class="jwc_info_head">
 			<h4>가입정보</h4>
 		</div>
@@ -91,29 +91,29 @@
 			<li>
 				<p style="width:20%;">
 					<span class="th">이름</span>
-					<span class="td">심기준</span>
+					<span class="td">${user.userName}</span>
 				</p>
 				<p style="width:40%;">
 				<span class="th">이메일</span>
-				<span class="td">shimkijun@naver.com</span>
+				<span class="td">${user.userEmail}</span>
 				</p>
 				<p style="width:40%;">
 				<span class="th">휴대전화</span>
-				<span class="td">01098858084</span>
+				<span class="td">${user.userPhone}</span>
 				</p>
 			</li>
 			<li>
 			<p style="width:20%;">
 			<span class="th">나이</span>
-			<span class="td">33</span>
+			<span class="td">${user.userAge}</span>
 			</p>
 			<p style="width:40%;">
 			<span class="th">가입날짜</span>
-			<span class="td">32032032</span>
+			<span class="td">${user.userDate}</span>
 			</p>
 			<p style="width:40%;">
 			<span class="th">회원등급</span>
-			<span class="td">0</span>
+			<span class="td">${user.userLv} Lv</span>
 			</p>
 			</li>
 		</ul>
@@ -121,7 +121,6 @@
 </div>
 <div class="jwc_btn">
 	<a href="/project/">HOME</a>
-	<a href="modifyForm">수정하기</a>
 	<a href="loginForm">로그인</a>
 </div>
 <%@ include file="/resources/common/_bottom.jsp"%>

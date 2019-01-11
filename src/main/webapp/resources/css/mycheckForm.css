@@ -1,0 +1,119 @@
+@charset "UTF-8";
+	.mycheckForm_wrap{
+		max-width:450px;
+		width:100%;
+		margin:50px auto;
+	}
+	
+	.mycheck_from_wrap{
+		width:100%;
+		border:1px solid #efefef;
+		border-radius: 10px;
+		overflow:hidden;
+	}
+	
+	.mycheck_head{
+		padding:10px;
+		background-color:#2e4162;
+		color:#fff;
+		font-size:15px;
+	}
+	
+	.mycheck_from_wrap ul > li{
+		padding:10px;
+		border-bottom:1px solid #efefef;
+	}
+	
+	
+	
+	.mycheck_from_wrap ul > li:last-child{
+		border-bottom:0;
+	}
+	
+	
+	ul li .mycheck_tr::after{
+		display:block;
+		clear:both;
+		content:"";
+	}
+	ul li .mycheck_tr > div{
+		font-size:14px;
+		height:30px;
+		line-height:30px;
+	}
+	
+	ul li .mycheck_tr > div.mycheck_th{
+		font-weight:700;
+		color:#2e4162;
+		width:100%;
+	}
+	
+	ul li .mycheck_tr > div.mycheck_td{
+		line-height:0;
+		width:100%;
+	}
+	ul li .mycheck_tr > div.mycheck_td input{
+		height:100%;
+		width:100%;
+		padding:0 5px;
+	}
+
+	.mycheckForm_wrap input{
+		border:1px solid #ddd;
+		padding:0;
+		margin:0;
+	}
+	.mycheckForm_wrap span{
+		display:inline-block;
+		width:100%;
+		line-height:30px;
+		border:1px solid #ddd;
+		padding:0 5px;
+		margin:0;
+	}
+	.mycheckForm_wrap label{
+		display:block;
+		width:100%;
+		height:100%;
+	}
+	.mycheckForm_wrap button{
+		width:150px;
+		border:1px solid #efefef;
+		border-radius: 5px;
+		height:30px;
+		cursor:pointer;
+		background-color:#00aef0;
+		color:#fff;
+		font-weight:700;
+	}
+	.mycheckForm_wrap button:hover{
+		background-color:#2e4162;
+	}
+	
+	.mycheckForm_wrap .txt{
+		font-size:12px !important;
+	}
+	
+	.mycheck_btn_wrap{
+		padding:20px 0;
+		text-align:center;
+	}
+	
+	.mycheck_btn_wrap a{
+		display:inline-block;
+		vertical-align:top;
+		width:150px;
+		border:1px solid #efefef;
+		border-radius: 5px;
+		height:30px;
+		line-height:30px;
+		cursor:pointer;
+		background-color:#2e4162;
+		color:#fff;
+		font-weight:700;
+		font-size:13px;
+	}
+	
+	.mycheckForm_wrap a:hover{
+		background-color:#00aef0;
+	}

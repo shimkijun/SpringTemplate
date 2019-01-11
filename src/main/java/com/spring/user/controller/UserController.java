@@ -32,6 +32,15 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	@Autowired
 	UserService service;
 	
+	@ModelAttribute("serverTime")
+	public String getServerTime(Locale locale) {
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		return dateFormat.format(date);
+	}
+	
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String joinForm() {
 		return "/user/join";
@@ -43,22 +52,18 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 			@RequestParam("userPw2") String userPw2) {
 		
 		int userCheck = service.userCheck(user);
-		
 		if(userCheck == 0) {
 			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			PasswordEncoding passwordEncoding = new PasswordEncoding(passwordEncoder);
 			if(userPw1.equals(userPw2)) {
 				user.setUserPw(passwordEncoding.encode(userPw2));
 			}
-			service.userRegister(user);
-			
 		}else if(userCheck == 1){
-			System.out.println("아이디 있음");
 			return "/user/join";
 		}else if(userCheck == 2){
-			System.out.println("아이디 값 이 없음");
 			return "/user/join";
 		}
+		service.userRegister(user);
 		return "/user/joinOk";
 	}
 
@@ -80,16 +85,21 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 		return "/index";
 	}
 	
-	@RequestMapping(value = "/modifyForm", method = RequestMethod.GET)
-	public String modifyForm() {
-		return "/user/modify";
+	@RequestMapping(value = "/mycheckForm", method = RequestMethod.GET)
+	public String mycheckForm() {
+		return "/user/mycheckForm";
 	}
 	
-	@RequestMapping(value = "/deleteForm", method = RequestMethod.GET)
-	public String deleteForm() {
-		return "/user/delete";
+	@RequestMapping(value = "/mycheck", method = RequestMethod.POST)
+	public String mycheckAction(UserDto user,HttpSession session,Model model) {
+		UserDto dto = service.userLogin(user);
+		if(dto == null) {
+			return "/user/mycheckForm";
+		}
+		model.addAttribute("userInfo", dto);
+		return "/user/mypage";
 	}
-	
+
 	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
 	public @ResponseBody int userCheckAction (UserDto user,
 			@RequestParam("userId") String userId) {
@@ -98,10 +108,43 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session,Model model) {
+	public String logout(HttpSession session) {
 		session.invalidate();
 		return "/index";
 	}
 
+	@RequestMapping(value = "/modifyForm", method = RequestMethod.POST)
+	public String modifyForm(UserDto user,Model model) {
+		UserDto dto = service.userInfo(user);
+		model.addAttribute("userInfo", dto);
+		return "/user/modify";
+	}
+	
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyAction(UserDto user,
+			@RequestParam("userPw1") String userPw1,
+			@RequestParam("userPw2") String userPw2,
+			Model model) {
+			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			PasswordEncoding passwordEncoding = new PasswordEncoding(passwordEncoder);
+			if(userPw1.equals(userPw2)) {
+				user.setUserPw(passwordEncoding.encode(userPw2));
+			}
+			service.userModify(user);
+			UserDto dto = service.userInfo(user);
+			model.addAttribute("userInfo", dto);
+		return "/user/mypage";
+	}
+	
+	@RequestMapping(value = "/deleteForm", method = RequestMethod.GET)
+	public String deleteForm() {
+		return "/user/delete";
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String deleteAction() {
+		return "/user/deleteOk";
+	}
 	
 }

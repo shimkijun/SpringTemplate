@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="css/index.css" />
 <link rel="stylesheet" href="css/joinForm.css" />
 <link rel="stylesheet" href="css/loginForm.css" />
+<link rel="stylesheet" href="css/mycheckForm.css" />
+<link rel="stylesheet" href="css/deleteForm.css" />
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"

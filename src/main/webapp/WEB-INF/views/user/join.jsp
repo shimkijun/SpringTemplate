@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/resources/common/_top.jsp"%>
 <div class="join_wrap">
-	<form action="join" method="POST" name="joinForm">
+	<form:form action="join" method="post" commandName="user">
 		<div class="join_from_wrap">
 			<div class="join_head">
 				<h2>
@@ -16,7 +16,7 @@
 							<label for="userId">아이디</label>
 						</div>
 						<div class="join_td">
-							<input type="text" id="userId" name="userId" maxlength="14" autocomplete=off>
+							<form:input id="userId" path="userId" name="userId" maxlength="14" autocomplete="off" />
 							<button type="button" id="idChk" >아이디확인</button>
 						</div>
 						<div class="info_ex txt">
@@ -86,7 +86,7 @@
 							<label for="userAge">나이</label>
 						</div>
 						<div class="join_td">
-							<input type="text" id="userAge" name="userAge" maxlength="100" autocomplete=off>
+							<input type="text" id="userAge" name="userAge" maxlength="3" autocomplete=off>
 						</div>
 					</div>
 				</li>
@@ -96,7 +96,7 @@
 			<button type="button" id="joinSubmit">가입하기</button>
 			<a href="loginForm">로그인</a>
 		</div>
-	</form>
+	</form:form>
 	<script>
 	$("#idChk").on("click",function(){
 		var userId = $("#userId").val();

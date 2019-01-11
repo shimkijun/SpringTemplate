@@ -32,9 +32,6 @@
 		</div>
 		<div class="right_info">
 			<ul class="rignt_menu">
-				<li>
-					<a href="joinTest">가입환영</a>
-				</li>
 			<c:if test="${empty user}">
 				<li>
 					<a href="joinForm">회원가입</a>
@@ -45,10 +42,7 @@
 			</c:if>
 			<c:if test="${!empty user}">
 				<li>
-					<a href="modifyForm">회원수정</a>
-				</li>
-				<li>
-					<a href="deleteForm">회원탈퇴</a>
+					<a href="mycheckForm">내정보</a>
 				</li>
 				<li>
 					<a href="logout">로그아웃</a>

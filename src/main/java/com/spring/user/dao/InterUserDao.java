@@ -9,4 +9,5 @@ public interface InterUserDao {
 	int userUpdate(UserDto user);
 	int userDelete(UserDto user);
 	int userCheck(UserDto user);
+	UserDto userInfoCheck(UserDto user);
 }
