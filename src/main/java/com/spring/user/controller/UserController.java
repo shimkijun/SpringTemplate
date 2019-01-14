@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -26,30 +27,36 @@ import com.spring.utill.PasswordEncoding;
 
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	
+	
 	@Autowired
 	UserService service;
+	@ModelAttribute("path")
+	public String getContextPath(HttpServletRequest request) {
+		return request.getContextPath();
+	}
 	
 	@ModelAttribute("serverTime")
 	public String getServerTime(Locale locale) {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		return dateFormat.format(date);
 	}
-	
+
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
-	public String joinForm() {
+	public String joinForm(UserDto user) {
 		return "/user/join";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinAction(UserDto user,
 			@RequestParam("userPw1") String userPw1,
-			@RequestParam("userPw2") String userPw2) {
+			@RequestParam("userPw2") String userPw2,
+			Model model) {
 		
 		int userCheck = service.userCheck(user);
 		if(userCheck == 0) {
@@ -64,6 +71,7 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 			return "/user/join";
 		}
 		service.userRegister(user);
+		model.addAttribute("user",user);
 		return "/user/joinOk";
 	}
 
@@ -76,12 +84,15 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	public String loginAction(UserDto user,HttpSession session,Model model) {
 		if(session.getAttribute("user") != null) {
 			session.removeAttribute("user");
+			session.removeAttribute("userNum");
 		}
 		UserDto dto = service.userLogin(user);
 		if(dto == null) {
 			return "/user/login";
 		}
 		session.setAttribute("user",dto.getUserId());
+		session.setAttribute("userNum",dto.getUserNum());
+		
 		return "/index";
 	}
 	
@@ -120,7 +131,6 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 		return "/user/modify";
 	}
 	
-	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyAction(UserDto user,
 			@RequestParam("userPw1") String userPw1,
@@ -138,12 +148,20 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 	}
 	
 	@RequestMapping(value = "/deleteForm", method = RequestMethod.GET)
-	public String deleteForm() {
+	public String deleteForm(Model model,UserDto user) {
+		UserDto dto = service.userLogin(user);
+		model.addAttribute("userInfo", dto);
 		return "/user/delete";
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String deleteAction() {
+	public String deleteAction(UserDto user, HttpSession session) {
+		UserDto dto = service.userLogin(user);
+		if(dto == null) {
+			return "/user/delete";
+		}
+		service.userRemove(user);
+		session.invalidate();
 		return "/user/deleteOk";
 	}
 	

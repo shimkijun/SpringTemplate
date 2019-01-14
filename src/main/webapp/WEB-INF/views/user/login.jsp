@@ -34,7 +34,7 @@
 		</div>
 		<div class="login_btn_wrap">
 			<button type="button" id="loginSubmit">로그인</button>
-			<a href="joinForm">회원가입</a>
+			<a href="${path}/user/joinForm">회원가입</a>
 		</div>
 	</form>
 </div>

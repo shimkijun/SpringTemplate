@@ -13,6 +13,10 @@
 </head>
 <body>
 <div class="wrap">
+<div class="hidden_info" style="display:none;">
+	<input type="hidden" id="login_id" name="login_id" value="${user}" />
+	<input type="hidden" id="login_Num" name="login_Num" value="${userNum}" />
+</div>
 <header class="header">
 	<div class="nav_wrap">
 		<div class="logo_wrap">
@@ -23,10 +27,10 @@
 		<div class="gnb_wrap">
 			<ul class="gnb">
 				<li>
-					<a href="/project/">HOME</a>
+					<a href="${path}">HOME</a>
 				</li>
 				<li>
-					<a href="#none">게시판보기</a>
+					<a href="${path}/bbs/list">게시판보기</a>
 				</li>
 			</ul>
 		</div>
@@ -34,18 +38,18 @@
 			<ul class="rignt_menu">
 			<c:if test="${empty user}">
 				<li>
-					<a href="joinForm">회원가입</a>
+					<a href="${path}/user/joinForm">회원가입</a>
 				</li>
 				<li>
-					<a href="loginForm">로그인</a>
+					<a href="${path}/user/loginForm">로그인</a>
 				</li>
 			</c:if>
 			<c:if test="${!empty user}">
 				<li>
-					<a href="mycheckForm">내정보</a>
+					<a href="${path}/user/mycheckForm">내정보</a>
 				</li>
 				<li>
-					<a href="logout">로그아웃</a>
+					<a href="${path}/user/logout">로그아웃</a>
 				</li>
 			</c:if>
 			</ul>

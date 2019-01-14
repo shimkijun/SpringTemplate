@@ -107,7 +107,7 @@
 			<input type="hidden" name="userId" value="${userInfo.userId}" readonly />
 			<div class="userInfo">
 				<div>
-					<p class="profile_image"><img src="images/default_profile.png"/></p>
+					<p class="profile_image"><img src="${path}/images/default_profile.png"/></p>
 					<p class="profile_upload"><input type="file" name="profileUpload" id="profileUpload" /></p>
 					<p class="profile_id">${userInfo.userId}</p>
 				</div>
@@ -170,7 +170,7 @@
 	</div>
 	<div class="modify_btn">
 		<input type="button" value="수정완료" id="modifySubmit">
-		<a href="deleteForm">탈퇴하기</a>
+		<a href="${path}/user/deleteForm">탈퇴하기</a>
 	</div>
 </div>
 <%@ include file="/resources/common/_bottom.jsp"%>

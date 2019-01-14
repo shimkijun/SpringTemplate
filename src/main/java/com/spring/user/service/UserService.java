@@ -17,13 +17,10 @@ public class UserService implements InterUserService{
 	public int userRegister(UserDto user) {
 		return dao.userInsert(user);
 	}
-
 	@Override
 	public UserDto userLogin(UserDto user) {
 		return dao.userLogin(user);
-		
 	}
-
 	@Override
 	public int userCheck(UserDto user) {
 		return dao.userCheck(user);
@@ -36,8 +33,7 @@ public class UserService implements InterUserService{
 
 	@Override
 	public int userRemove(UserDto user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.userDelete(user);
 	}
 
 	@Override

@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/resources/common/_top.jsp"%>
 <div class="join_wrap">
-	<form:form action="join" method="post" commandName="user">
+	 <form name="joinForm" action="join" method="POST"> 
 		<div class="join_from_wrap">
 			<div class="join_head">
 				<h2>
@@ -16,7 +18,7 @@
 							<label for="userId">아이디</label>
 						</div>
 						<div class="join_td">
-							<form:input id="userId" path="userId" name="userId" maxlength="14" autocomplete="off" />
+						 	<input id="userId" name="userId" maxlength="14" autocomplete="off" /> 
 							<button type="button" id="idChk" >아이디확인</button>
 						</div>
 						<div class="info_ex txt">
@@ -94,28 +96,8 @@
 		</div>
 		<div class="join_btn_wrap">
 			<button type="button" id="joinSubmit">가입하기</button>
-			<a href="loginForm">로그인</a>
+			<a href="${path}/user/loginForm">로그인</a>
 		</div>
-	</form:form>
-	<script>
-	$("#idChk").on("click",function(){
-		var userId = $("#userId").val();
-        $.ajax({
-            url : "idCheck",
-            type: "POST",
-            data : { userId : userId},
-            success : function(result){
-               if(result == 0){
-            	   alert("사용 가능한 아이디 입니다.");
-               }else if(result == 1){
-            	   alert("이미 사용중 입니다.");
-               }else if(result == 2){
-            	   alert("아이디 입력 하세요.");
-               }
-            }
-        });
-
-    });
-	</script>
+ 	</form>
 </div>
 <%@ include file="/resources/common/_bottom.jsp"%>

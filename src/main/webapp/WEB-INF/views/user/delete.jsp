@@ -16,7 +16,7 @@
 							<label for="userId">아이디</label>
 						</div>
 						<div class="delete_td">
-							<input type="hidden" id="userId" name="userId" maxlength="14" autocomplete=off value="${user}" readonly />
+							<input type="hidden" id="userId" name="userId" maxlength="14" autocomplete=off value="${user}" />
 							<span>${user}</span>
 						</div>
 					</div>

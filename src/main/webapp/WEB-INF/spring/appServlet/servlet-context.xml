@@ -27,11 +27,23 @@
 	
 	<context:component-scan base-package="com.spring" />
 	
+	<!-- 회원이 아니면 접근 할 수 없음. -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/modifyForm"/>
-			<mapping path="/deleteForm"/>
-			<mapping path="/mycheckForm"/>
+			<mapping path="/user/modifyForm"/>
+			<mapping path="/user/deleteForm"/>
+			<mapping path="/user/mycheckForm"/>
+			<mapping path="/user/mycheckForm"/>
+			
+			<beans:bean class="com.spring.user.dto.NotUserLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<!-- 회원은 접근 할 수 없음 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/joinForm"/>
+			<mapping path="/user/loginForm"/>
 			<beans:bean class="com.spring.user.dto.UserLoginInterceptor"/>
 		</interceptor>
 	</interceptors>

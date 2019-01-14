@@ -104,31 +104,22 @@ public class UserDao implements InterUserDao{
 	@Override
 	public int userDelete(UserDto user) {
 		int result = 0;
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		PasswordEncoding passwordEncoding = new PasswordEncoding(passwordEncoder);
 		String sql = "";
-		sql = "SELECT * FROM springMember WHERE userId=?";
-		template.query(sql, new Object[]{user.getUserId()}, new RowMapper<UserDto>() {
+		sql = "DELETE FROM springMember WHERE userId = ?";
+		result = template.update(sql, new PreparedStatementSetter() {
 			@Override
-			public UserDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-				UserDto user = new UserDto();
-				if(passwordEncoding.matches(user.getUserPw(),rs.getString("userPw"))) {
-					
-				}
-				return user;
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, user.getUserId());
 			}
 		});
-		
 		return result;
 	}
 
 	@Override
 	public int userCheck(UserDto user) {
-		
 		if(user.getUserId() == null || user.getUserId() == "") {
 			return 2;
 		}
-		
 		int result = 0;
 		String sql = "";
 		sql = "SELECT COUNT(*) FROM springMember WHERE userId=?";

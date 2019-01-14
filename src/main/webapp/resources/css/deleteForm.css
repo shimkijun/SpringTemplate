@@ -117,3 +117,38 @@
 	.deleteForm_wrap a:hover{
 		background-color:#00aef0;
 	}
+	
+
+/* delete ok css */
+	
+	.delete_welcome{
+		max-width:700px;
+		width:100%;
+		margin:100px auto 0;
+		border:1px solid #efefef;
+	}
+
+	.dwc_head{
+		color:#fff;
+		background-color:#00aef0;
+		padding:5px 10px;
+		font-size:15px;
+	}
+
+	.dwc_info > .jwc_id{
+		padding:10px;
+		font-size:13px;
+	}
+	.dwc_btn{
+		padding:10px;
+		text-align:center;
+	}
+	.dwc_btn a{
+		font-size:13px;
+		font-weight:700;
+		color:#fff;
+		display:inline-block;
+		padding:5px 15px;
+		background-color:#2e4162;
+		margin:0 3px;
+	}

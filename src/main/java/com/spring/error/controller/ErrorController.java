@@ -26,6 +26,12 @@ public class ErrorController {
 		 int httpErrorCode = getErrorCode(request);
 		 System.out.println(httpErrorCode);
 		 switch (httpErrorCode) {
+		 case 400: {
+        	 title ="400error";
+        	 msg = "400error";
+        	 ex = "400error";
+             break;
+         }
          case 404: {
         	 title ="404error 페이지를 찾을 수 없습니다.";
         	 msg = "404 요청하신 페이지를 찾을 수 없습니다.";

@@ -92,7 +92,7 @@
 			<input type="hidden" name="userId" value="${userInfo.userId}" readonly />
 			<div class="userInfo">
 				<div>
-					<p class="profile_image"><img src="images/default_profile.png"/></p>
+					<p class="profile_image"><img src="${path}/images/default_profile.png"/></p>
 					<p class="profile_id">${userInfo.userId}</p>
 				</div>
 				<div>

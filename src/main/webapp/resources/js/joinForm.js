@@ -2,6 +2,28 @@
  * 회원가입 유효성 검사
  */
 
+	//아이디 체크
+	$("#idChk").on("click",function(){
+		var userId = $("#userId").val();
+	    $.ajax({
+	        url : "idCheck",
+	        type: "POST",
+	        data : { userId : userId},
+	        success : function(result){
+	           if(result == 0){
+	        	   alert("사용 가능한 아이디 입니다.");
+	           }else if(result == 1){
+	        	   alert("이미 사용중 입니다.");
+	           }else if(result == 2){
+	        	   alert("아이디 입력 하세요.");
+	           }
+	        }
+	    });
+	
+	});
+	
+	//회원가입 유효성 검사
+	
 	$(".join_wrap #userId").on("change",function(){
 		var userId = $("#userId");
 		var idReg = /^[a-z0-9]{4,14}/g;

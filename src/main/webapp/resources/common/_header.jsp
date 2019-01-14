@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/gnb.css" />
-<link rel="stylesheet" href="css/footer.css" />
-<link rel="stylesheet" href="css/index.css" />
-<link rel="stylesheet" href="css/joinForm.css" />
-<link rel="stylesheet" href="css/loginForm.css" />
-<link rel="stylesheet" href="css/mycheckForm.css" />
-<link rel="stylesheet" href="css/deleteForm.css" />
+<link rel="stylesheet" href="${path}/css/reset.css" />
+<link rel="stylesheet" href="${path}/css/gnb.css" />
+<link rel="stylesheet" href="${path}/css/footer.css" />
+<link rel="stylesheet" href="${path}/css/index.css" />
+<link rel="stylesheet" href="${path}/css/joinForm.css" />
+<link rel="stylesheet" href="${path}/css/loginForm.css" />
+<link rel="stylesheet" href="${path}/css/mycheckForm.css" />
+<link rel="stylesheet" href="${path}/css/deleteForm.css" />
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"

@@ -16,21 +16,21 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			Object obj = session.getAttribute("user");
-			if(obj != null) 
+			if(obj != null) {
+				PrintWriter printwriter = response.getWriter();
+				printwriter.print("<script>"
+						+ "alert('회원은 접근 할 수 없습니다.');"
+						+"location.href="+request.getContextPath()+"/"
+						+ "</script>");
+				printwriter.flush();
+				printwriter.close();
 				return true;
+			}
 		}
-		PrintWriter printwriter = response.getWriter();
-		printwriter.print("<script>"
-				+ "alert('로그인을 해주십시오');"
-				+"location.href="+request.getContextPath()+"/"
-				+ "</script>");
-		printwriter.flush();
-		printwriter.close();
-		return false;
+		return true;
 	}
 	
 	@Override
