@@ -147,7 +147,7 @@ public class UserDao implements InterUserDao{
 					info.setUserLv(rs.getInt(9));
 					return info;
 			}
-		});	
+		});
 		
 		if(info.isEmpty()) {
 			return null;

@@ -1,5 +1,8 @@
 package com.spring.bbs.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,11 @@ public class BoardService implements InterBoardService{
 	@Override
 	public int bbsWrite(BoardDto bbs) {
 		return dao.BoardInsert(bbs);
+	}
+
+	@Override
+	public ArrayList<BoardDto> bbsLists() {
+		return dao.BoardList();
 	}
 	
 }

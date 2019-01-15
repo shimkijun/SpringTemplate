@@ -4,20 +4,20 @@
 	<div id="tx_trex_container" class="tx-editor-container">
 		<!-- 사이드바 -->
 		<div id="tx_sidebar" class="tx-sidebar">
-			<div class="tx-sidebar-boundary">
-				<!-- 사이드바 / 첨부 -->
+			<!-- <div class="tx-sidebar-boundary">
+				사이드바 / 첨부
 				<ul class="tx-bar tx-bar-left tx-nav-attach">
-					<!-- 이미지 첨부 버튼 시작 -->
-					<!--
+					이미지 첨부 버튼 시작
+					
 							@decsription
 							<li></li> 단위로 위치를 이동할 수 있다.
-						-->
+						
 					<li class="tx-list">
 						<div unselectable="on" id="tx_image" class="tx-image tx-btn-trans">
 							<a href="javascript:;" title="사진" class="tx-text">사진</a>
 						</div>
 					</li>
-					<!-- 이미지 첨부 버튼 끝 -->
+					이미지 첨부 버튼 끝
 					<li class="tx-list">
 						<div unselectable="on" id="tx_file" class="tx-file tx-btn-trans">
 							<a href="javascript:;" title="파일" class="tx-text">파일</a>
@@ -34,14 +34,14 @@
 						</div>
 						<ul class="tx-extra-menu tx-menu" style="left: -48px;"
 							unselectable="on">
-							<!--
+							
 									@decsription
 									일부 버튼들을 빼서 레이어로 숨기는 기능을 원할 경우 이 곳으로 이동시킬 수 있다.
-								-->
+								
 						</ul>
 					</li>
 				</ul>
-				<!-- 사이드바 / 우측영역 -->
+				사이드바 / 우측영역
 				<ul class="tx-bar tx-bar-right">
 					<li class="tx-list">
 						<div unselectable="on" class="tx-btn-lrbg tx-fullscreen"
@@ -58,7 +58,7 @@
 						</div>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 
 		<!-- 툴바 - 기본 시작 -->
@@ -577,13 +577,13 @@
 		// Place your validation logic here
 
 		// sample : validate that content exists
+		var bbstitle = document.getElementById("bbsTitle");
 		var validator = new Trex.Validator();
 		var content = editor.getContent();
 		if (!validator.exists(content)) {
 			alert('내용을 입력하세요');
 			return false;
 		}
-
 		return true;
 	}
 

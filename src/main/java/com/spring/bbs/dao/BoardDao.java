@@ -1,11 +1,16 @@
 package com.spring.bbs.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -14,6 +19,8 @@ import com.spring.bbs.dto.BoardDto;
 @Repository
 public class BoardDao implements InterBoardDao{
 	
+	private static final int ArrayList = 0;
+	private static final int BoardDto = 0;
 	private JdbcTemplate template;
 	
 	@Autowired
@@ -31,7 +38,7 @@ public class BoardDao implements InterBoardDao{
 				pstm.setInt(1,bbs.getUserNum());
 				pstm.setString(2, bbs.getUserId());
 				pstm.setString(3, bbs.getUserName());
-				pstm.setString(4, bbs.getBbsTitle());
+				pstm.setString(4, bbs.getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;"));
 				pstm.setString(5, bbs.getBbsContent());
 				if(bbs.getBbsReNum() == 0) {
 					pstm.setInt(6, num);
@@ -47,6 +54,11 @@ public class BoardDao implements InterBoardDao{
 		});
 		
 		return result;
+	}
+	@Override
+	public ArrayList<BoardDto> BoardList() {
+		String sql ="SELECT * FROM springBoard ORDER BY bbsNum DESC";
+		return (ArrayList<BoardDto>)template.query(sql, new BeanPropertyRowMapper<BoardDto>(BoardDto.class));
 	}
 
 }

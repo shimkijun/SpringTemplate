@@ -35,6 +35,28 @@
 	
 	.writeForm #bbsTitle{
 		width:88.9%;
+		height: 22px;
+	    line-height: 22px;
+	    border: 1px solid #ccc;
+	    padding: 0 5px;
+	    margin: 0;
+	}
+	.wrtieForm_btn{
+		padding:10px 0;
+		text-align:right;
+	}
+	.wrtieForm_btn button,
+	.wrtieForm_btn a{
+		display:inline-block;
+		width:80px;
+		font-size:12px;
+		font-weight:700;
+		padding:3px 0;
+		cursor:pointer;
+		border:1px solid #efefef;
+		background-color:#2e4162;
+		color:#fff;
+		text-align:center;
 	}
 </style>
 <div class="writeForm_wrap">
@@ -59,8 +81,9 @@
 			<%@ include file="editor.jsp"%>
 		</div>
 	</div>
-	<div>
+	<div class="wrtieForm_btn">
 		<button onclick='saveContent()'>작성하기</button>
+		<a href="${path}/bbs/list">목록</a>
 	</div>
 	</form>
 </div>

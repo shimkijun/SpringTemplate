@@ -1,6 +1,11 @@
 package com.spring.bbs.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,7 @@ import com.spring.bbs.dto.BoardDto;
 import com.spring.bbs.service.BoardService;
 import com.spring.user.dto.UserDto;
 import com.spring.user.service.UserService;
+import com.spring.utill.MessagesForWeb;
 
 @Controller
 @RequestMapping("/bbs")
@@ -31,9 +37,12 @@ public class BoardController {
 	public String getContextPath(HttpServletRequest request) {
 		return request.getContextPath();
 	}
-
+	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public String list() {
+	public String list(Model model) {
+		List<BoardDto> list = new ArrayList<>();
+		list = service.bbsLists();
+		model.addAttribute("lists",list);
 		return "/bbs/list";
 	}
 	
@@ -45,20 +54,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/write", method = RequestMethod.POST)
-	public String writeAction(BoardDto bbs) {
-		/*System.out.println("bbsNum="+bbs.getBbsNum());
-		System.out.println("userNum="+bbs.getUserNum());
-		System.out.println("userId="+bbs.getUserId());
-		System.out.println("userName="+bbs.getUserName());
-		System.out.println("bbsTitle="+bbs.getBbsTitle());
-		System.out.println("bbsContent="+bbs.getBbsContent());
-		System.out.println("bbsref="+bbs.getBbsReRef());
-		System.out.println("bbslev="+bbs.getBbsReLev());
-		System.out.println("bbsnum="+bbs.getBbsReNum());
-		System.out.println("bbsCount = "+bbs.getBbsCount());
-		System.out.println("bbsDate = "+bbs.getBbsDate());
-		System.out.println("userLv = "+bbs.getUserLv());*/
-		service.bbsWrite(bbs);
+	public String writeAction(BoardDto bbs,Model model){
+		List<BoardDto> list = new ArrayList<>();
+		list = service.bbsLists();
+		model.addAttribute("lists",list);
+		int result = service.bbsWrite(bbs);
+		if(result == 1) {
+			
+		}
 		
 		return "/bbs/list";
 	}
