@@ -17,7 +17,6 @@
 	
 	.list_form > div > ul{
 		width:100%;
-		
 	}
 	.list_form > div > ul > li::after{
 		display:block;
@@ -89,7 +88,7 @@
 </style>
 <div class="list_wrap">
 	<h2>
-			게시판 목록
+		게시판 목록
 	</h2>
 	<div class="list_form">
 		<div class="list_head">
@@ -105,15 +104,24 @@
 		</div>
 		<div class="list_body">
 			<ul>
-			<c:forEach items="${lists}" var="list">
-				<li>
-					<span class="bbs_num">${list.bbsNum}</span>
-					<span class="bbs_title"><a href="#none">${list.bbsTitle}</a></span>
-					<span class="bbs_user">${list.userId}</span>
-					<span class="bbs_date"><fmt:formatDate value="${list.bbsDate}" pattern="yyyy-MM-dd"/></span>
-					<span class="bbs_count">${list.bbsCount}</span>
-				</li>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${empty lists}">
+					<li>
+						<p style="text-align:center;padding:10px;">게시물이 없습니다.</p>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${lists}" var="list">
+						<li>
+							<span class="bbs_num">${list.bbsNum}</span>
+							<span class="bbs_title"><a href="${path}/bbs/view?no=${list.bbsNum}&id=${list.userId}">${list.bbsTitle}</a></span>
+							<span class="bbs_user">${list.userId}</span>
+							<span class="bbs_date"><fmt:formatDate value="${list.bbsDate}" pattern="yyyy-MM-dd"/></span>
+							<span class="bbs_count">${list.bbsCount}</span>
+						</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 			</ul>
 		</div>
 	</div>
@@ -124,25 +132,6 @@
 	</div>
 </div>
 <script type="text/javascript" >
-	function post_to_url(path, method) {
-		var userId = document.getElementById("login_id").value;
-		var userNum = document.getElementById("login_Num").value;
-	    method = method || "post";
-	    var form = document.createElement("form");
-	    form.setAttribute("method", method);
-	    form.setAttribute("action", path);
-	    var hiddenField1 = document.createElement("input");
-	    hiddenField1.setAttribute("type", "hidden");
-	    hiddenField1.setAttribute("name", "userId");
-	    hiddenField1.setAttribute("value",userId);
-	    form.appendChild(hiddenField1);
-	    var hiddenField2 = document.createElement("input");
-	    hiddenField2.setAttribute("type", "hidden");
-	    hiddenField2.setAttribute("name", "userNum");
-	    hiddenField2.setAttribute("value",userNum);
-	    form.appendChild(hiddenField2);
-	    document.body.appendChild(form);
-	    form.submit();
-	}
+	
 </script>
 <%@ include file="/resources/common/_bottom.jsp"%>

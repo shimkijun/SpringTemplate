@@ -24,5 +24,24 @@ public class BoardService implements InterBoardService{
 	public ArrayList<BoardDto> bbsLists() {
 		return dao.BoardList();
 	}
+
+	@Override
+	public int bbsCount(BoardDto bbs) {
+		return dao.BoardCount(bbs);
+	}
+
+	@Override
+	public BoardDto bbsView(BoardDto bbs) {
+		return dao.BoardView(bbs);
+	}
+
+	@Override
+	public int bbsUpdate(BoardDto bbs) {
+		return dao.BoardUpdate(bbs);
+	}
+	@Override
+	public int bbsDelete(BoardDto bbs) {
+		return dao.BoardDelete(bbs);
+	}
 	
 }

@@ -14,6 +14,7 @@ public class MessagesForWeb {
 		PrintWriter printwriter = response.getWriter();
 		printwriter.print("<script>"
 				+ "alert('"+msg+"');"
+				+ "history.back();"
 				+ "</script>");
 		printwriter.flush();
 		printwriter.close();

@@ -9,8 +9,10 @@ import com.spring.bbs.dao.BoardDao;
 import com.spring.bbs.dto.BoardDto;
 
 public interface InterBoardService {
-	
+	public int bbsCount(BoardDto bbs);
 	public int bbsWrite(BoardDto bbs);
 	public List<BoardDto> bbsLists();
-	
+	public BoardDto bbsView(BoardDto bbs);
+	public int bbsUpdate(BoardDto bbs);
+	public int bbsDelete(BoardDto bbs);
 }

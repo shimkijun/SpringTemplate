@@ -60,28 +60,33 @@
 </style>
 <div class="writeForm_wrap">
 	<h2>
-		게시판 작성하기
+		게시판 수정하기
 	</h2>
 	<div class="writeForm">
-	<form name="tx_editor_form" id="tx_editor_form" action="write" method="post" accept-charset="utf-8">
-			<input type="hidden" name="userId" id="userId" value="${user.userId}" />
-			<input type="hidden" name="userName" id="userName" value="${user.userName}" />
-			<input type="hidden" name="userNum" id="userNum" value="${user.userNum}" />
-			<input type="hidden" name="userLv" id="userLv" value="${user.userLv}" />
+	<form name="tx_editor_form" id="tx_editor_form" action="modify" method="post" accept-charset="utf-8">
+			<input type="hidden" name="userId" id="userId" value="${user}" />
+			<input type="hidden" name="bbsNum" id="bbsNum" value="${modify.bbsNum}" />
 		<div class="write_info">
 			<label for="userId">아이디</label>
-			<input type="text" value="${user.userId}" readonly disabled style="background-color:#fff;border:0;"/>
+			<input type="text" value="${modify.userId}" readonly disabled style="background-color:#fff;border:0;"/>
 		</div>
 		<div class="write_title">
 			<label for="bbsTitle">제목</label>
-			<input type="text" name="bbsTitle" id="bbsTitle" />
+			<input type="text" name="bbsTitle" id="bbsTitle" value="${modify.bbsTitle}"/>
 		</div>
 		<div class="write_content">
 			<%@ include file="editor.jsp"%>
 		</div>
 	</div>
 	<div class="wrtieForm_btn">
-		<button onclick='saveContent()'>작성하기</button>
+		<c:if test="${!empty user}">
+		<c:if test="${modify.userId eq user}">
+			<button onclick='saveContent()'>수정완료</button>
+			<button type="button" onclick="post_to_delete('delete')">삭제하기</button>
+		</c:if>
+		<button type="button" onclick="post_to_url('writeForm')" >글쓰기</button>
+	</c:if>
+		
 		<a href="${path}/bbs/list">목록</a>
 	</div>
 	</form>

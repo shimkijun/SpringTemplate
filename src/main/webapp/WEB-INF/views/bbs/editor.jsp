@@ -580,7 +580,10 @@
 		var bbstitle = document.getElementById("bbsTitle");
 		var validator = new Trex.Validator();
 		var content = editor.getContent();
-		if (!validator.exists(content)) {
+		if(bbstitle == "" || bbstitle == null){
+			alert("제목을 입력하세요");
+			return false;
+		}else if (!validator.exists(content)) {
 			alert('내용을 입력하세요');
 			return false;
 		}

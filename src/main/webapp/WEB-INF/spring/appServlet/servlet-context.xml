@@ -35,6 +35,7 @@
 			<mapping path="/user/mycheckForm"/>
 			<mapping path="/user/mycheckForm"/>
 			<mapping path="/bbs/writeForm"/>
+			<mapping path="/bbs/modifyForm"/>
 			
 			<beans:bean class="com.spring.user.dto.NotUserLoginInterceptor"/>
 		</interceptor>

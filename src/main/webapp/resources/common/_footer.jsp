@@ -5,3 +5,5 @@
 <script type="text/javascript" src="${path}/js/mycheckForm.js"></script>
 <script type="text/javascript" src="${path}/js/modifyForm.js"></script>
 <script type="text/javascript" src="${path}/js/deleteForm.js"></script>
+<script type="text/javascript" src="${path}/js/bbsWrite.js"></script>
+<script type="text/javascript" src="${path}/js/bbsDelete.js"></script>
